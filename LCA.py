@@ -1,10 +1,8 @@
 class Node:
-
     def __init__(self, key):
         self.key = key
         self.left = None
         self.right = None
-
 
 def findLCA(root, n1, n2):
     if root is None:
@@ -20,7 +18,6 @@ def findLCA(root, n1, n2):
         return root
 
     return left_lca if left_lca is not None else right_lca
-
 
 root = Node(1)
 root.left = Node(2)
