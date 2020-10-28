@@ -1,54 +1,21 @@
 import unittest
 import LCA
 
-
 class LCAPythonTest(unittest.TestCase):
 
     # 1. Test LCA scenarios
-    def testLCA(self):
-        root = LCA.Node(1)
-        root.left = LCA.Node(2)
-        root.right = LCA.Node(3)
-        root.left.left = LCA.Node(4)
-        root.left.right = LCA.Node(5)
-        root.right.left = LCA.Node(6)
-        root.right.right = LCA.Node(7)
-        self.assertEqual(1, LCA.findLCA(root, 4, 3))
-        self.assertEqual(1, LCA.findLCA(root, 2, 7))
-        self.assertEqual(3, LCA.findLCA(root, 6, 7))
+    def test_tree(self):
+        self.assertEqual(LCA.findLCA(LCA.root, 2, 3).key, 1)
+        self.assertEqual(LCA.findLCA(LCA.root, 4, 5).key, 2)
+        self.assertEqual(LCA.findLCA(LCA.root, 6, 7).key, 3)
 
-    # 2.  Test if null
-    def testNull(self):
-        root = None
-        self.assertEqual(-1, LCA.findLCA(root, 4, 5), 'Empty tree returns -1')
+    # 2. Test empty tree
+    def test_emptyTree(self):
+        self.assertEqual(LCA.findLCA(None, None, None), None)
 
-    # 3. Invalid Node
-    def testInvalidNode(self):
-        root = LCA.Node(1)
-        root.left = LCA.Node(2)
-        root.right = LCA.Node(3)
-        root.left.left = LCA.Node(4)
-        root.left.right = LCA.Node(5)
-        root.right.left = LCA.Node(6)
-        root.right.right = LCA.Node(7)
-        self.assertEqual(-1, LCA.findLCA(root, 4, 9), "Unfound node returns -1")
-
-    # 4. Root is only node
-    def test_rootIsNodeOnly(self):
-        root = LCA.Node(1)
-        self.assertEqual(1, LCA.findLCA(root, 1, 1))
-
-    # 5. Duplicated Nodes
-    def test_duplicatedNodes(self):
-        root = LCA.Node(1)
-        root.left = LCA.Node(2)
-        root.right = LCA.Node(3)
-        root.left.left = LCA.Node(4)
-        root.left.right = LCA.Node(6)
-        root.right.left = LCA.Node(6)
-        root.right.right = LCA.Node(7)
-        self.assertEqual(1, LCA.findLCA(root, 6, 7))
-        # 1 is the common root of both 6's
+    # 3. Test same node
+    def test_sameNode(self):
+        self.assertEqual(LCA.findLCA(LCA.root, 1, 1).key, 1)
 
 if __name__ == '__main__':
     unittest.main()
