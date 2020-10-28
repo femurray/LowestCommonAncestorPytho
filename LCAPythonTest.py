@@ -50,7 +50,6 @@ class LCAPythonTest(unittest.TestCase):
         self.assertEqual(1, LCA.findLCA(root, 6, 7))
         # 1 is the common root of both 6's
 
-
 if __name__ == '__main__':
     unittest.main()
 
