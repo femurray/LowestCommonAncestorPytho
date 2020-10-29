@@ -5,6 +5,7 @@ class Node:
         self.right = None
 
 def findLCA(root, n1, n2):
+
     if root is None:
         return None
 
